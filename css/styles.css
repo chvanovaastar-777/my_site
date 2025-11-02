@@ -95,7 +95,7 @@
 .hero {
     
     text-align: center;
-    background: url("../images/fon.JPG") no-repeat center center/cover;  /* Фон */
+    background: url("../images/fon.jpg") no-repeat center center/cover;  /* Фон */
     height: 100vh;                  /* 100% высоты экрана */
     display: flex;
     flex-direction: column;
