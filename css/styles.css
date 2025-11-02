@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Caslon+Display&display=swap');
 
-/* ========== СБРОС И БАЗОВЫЕ СТИЛИ ========== */
+/* Сброс и базовые стили */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: "Inter", sans-serif;
+    box-sizing: border-box;
 }
 
+/* Базовые переменные */
 :root {
-    --primary-color: #424de8;
+    --primary-color: #424de8;       /* цвет верхней подсвеченной кнопки */
     --primary-color-hover: #c05a1f;
     --secondary-color: #84aec4;
     --dark-color: #dbdbe6;
@@ -19,107 +20,124 @@
     --gray-color: #999999;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
-    --font-size: 15px;
+    --font-size:15px;
 }
 
-/* ========== ОБЩИЕ КОНТЕЙНЕРЫ ========== */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 10px;
-}
-
-/* ========== HEADER ========== */
-.header {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-}
-
+/* Контейнер шапки */
 .header__inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* логотип слева, меню справа */
     align-items: center;
-    flex-wrap: wrap;
+    padding: 20px 20px; /* отступ сверху и снизу */
+    flex-wrap: wrap; /* чтобы на маленьких экранах элементы могли переноситься */
 }
 
-/* ========== ЛОГОТИП ========== */
+/* Логотип */
 .logo {
-    flex-shrink: 0;
+    flex-shrink: 0; /* логотип не сжимается */
 }
 
 .logo img {
     display: block;
 }
-
-/* ========== НАВИГАЦИЯ ========== */
+/* Навигация */
 .nav {
     display: flex;
 }
 
-.nav__list {
-    display: flex;
-    gap: 60px;
-    padding: 10px 0;
-    padding-left: 20px;
-    list-style: none;
+
+
+
+/* Контейнер */
+.container {
+    max-width: 1200px;     /* ограничиваем максимальную ширину блока */
+    margin: 0 auto;        /* автоматически центрируем блок по горизонтали */
+    padding: 0 10px;       /* добавляем отступы от краёв экрана */
 }
 
+/* Верхние кнопки */
+
+.nav__list {
+    display: flex;       /* горизонтальный список */
+    gap: 60px;           /* расстояние между пунктами меню */
+    padding: 10px 0;     /* отступы сверху и снизу */
+     padding-left: 20px; /* внутренний отступ слева */
+}
+
+/* Текст верхних кнопок */
 .nav__link {
-    font-weight: 200;
-    color: rgb(223, 223, 226);
-    text-decoration: none;
-    position: relative;
-    transition: var(--transition);
+    font-weight: 200;                  /* жирный текст */
+    position: relative;                /* для псевдоэлементов */
+    transition: var(--transition);     /* плавный переход */
+    text-decoration: none;             /* убирает подчеркивание ссылок */
+    color: rgb(223, 223, 226);         /* фиксированный цвет кнопок */
+
 }
 
 .nav__link::after {
-    content: '';
+    content: '';                        /* псевдоэлемент для линии */
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--primary-color);
-    transition: var(--transition);
+    bottom: 0; left: 0;                 /* расположение снизу */
+    width: 0;                            /* изначально невидим */
+    
 }
 
+/* Hover эффект */
 .nav__link:hover {
-    color: var(--primary-color);
+    color: var(--primary-color);  /* меняется цвет текста при наведении */
 }
 
 .nav__link:hover::after {
-    width: 100%;
+    width: 100%;                  /* линия растягивается под текстом */
 }
 
-/* ========== HERO-БЛОК ========== */
+/* Hero-блок */
 .hero {
-    position: relative;
+    
     text-align: center;
-    background: url("../images/fon.JPG") no-repeat center center/cover;
-    height: 100vh;
+    background: url("../images/fon.JPG") no-repeat center center/cover;  /* Фон */
+    height: 100vh;                  /* 100% высоты экрана */
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: rgb(215, 218, 214);
     padding: 0 50px;
     overflow: hidden;
+    position: relative;             /* чтобы контент был поверх фона */
+    background-size: 100%; /* картинка занимает 70% ширины блока */
+background-position: top center;
+background-repeat: no-repeat;
 }
 
+/* Header поверх фона */
+
+
+
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: absolute;             /* поверх фона */
+    top: 0;
+    left: 0;
+    z-index: 10;                    /* выше фона */
+}
+
+/* Контент по центру */
 .hero__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 5;
+    text-align: center;
+    flex: 1;                        /* занимает всё оставшееся пространство */
+    z-index: 5;                      /* ниже header, но выше фона */
 }
 
+/* Заголовок и подзаголовок */
 .hero__title {
     font-size: 3.5rem;
     margin-bottom: 20px;
@@ -130,54 +148,213 @@
     margin-bottom: 40px;
 }
 
+/* Кнопки в hero */
 .hero__buttons {
     display: flex;
     gap: 20px;
     justify-content: center;
 }
 
-/* ========== КНОПКИ ========== */
+/* Кнопка — базовый стиль */
 .btn {
-    padding: 10px 25px;
-    font-size: 1.2rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: var(--transition);
-    text-decoration: none;
-    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: auto;               /* элемент «отталкивается» вниз в flex-контейнере */
+    align-self: flex-start;         /* выравнивает элемент по началу перекрестной оси */
+    padding: 1px 20px;              /* внутренние отступы */
+    font-size: 1.2rem;              /* размер текста */
+    border-radius: 50px;            /* скруглённые углы */
+    transition: var(--transition);  /* плавный переход для hover */
+    cursor: pointer;                /* курсор «рука» при наведении */
+    box-shadow: 1 4px 10px rgba(0, 0, 0, 0.1);  /* тень */
 }
 
-/* Основная кнопка */
+/* Кнопка "Заказать" — основной стиль */
 .btn--primary {
-    background-color: #2c659b;
-    color: var(--white-color);
-    width: 200px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex;                  /* превращает кнопку во флекс-контейнер */
+    justify-content: center;        /* центрирует содержимое по горизонтали */
+    align-items: center;            /* центрирует содержимое по вертикали */
+    margin: 0 auto;                 /* центрирует саму кнопку */
+    background-color: #2c659b;      /* фоновый цвет */
+    color: var(--white-color);      /* цвет текста */
+    padding: 10px 25px;             /* внутренние отступы */
+    font-size: 1.2rem;              /* размер текста */
+    border-radius: 50px;            /* скруглённые края */
+    cursor: pointer;                /* курсор «рука» */
+    transition: var(--transition);  /* плавный переход для hover */
+    box-shadow: var(--shadow);      /* тень */
+    width: 200px;                   /* фиксированная ширина */
+    height: 40px;                   /* фиксированная высота */
+    text-decoration: none;          /* убирает подчёркивание у ссылок */
 }
 
-.btn--primary:hover {
-    background-color: #677aa1;
-    transform: translateY(-3px);
+.btn--primary:hover {              /* эффект при наведении */
+    background-color: #677aa1;      /* темнее при наведении */
+    transform: translateY(-3px);    /* немного «подпрыгивает» */
 }
 
 /* Прозрачная кнопка */
 .btn--outline {
-    background-color: transparent;
-    color: var(--white-color);
-    border: 2px solid var(--white-color);
+    background-color: transparent;          /* прозрачный фон */
+    color: var(--white-color);              /* белый текст */
+    border: 2px solid var(--white-color);   /* белая рамка */
 }
 
-.btn--outline:hover {
-    background-color: rgba(46, 177, 39, 0.1);
-    transform: translateY(-3px);
+.btn--outline:hover {                      /* эффект при наведении */
+    background-color: rgba(46, 177, 39, 0.1); /* лёгкий полупрозрачный фон */
+    transform: translateY(-3px);               /* подпрыгивание */
 }
 
-/* ========== БУРГЕР-МЕНЮ ========== */
+
+/* ===== Адаптивность для планшетов и небольших экранов ===== */
+@media (max-width: 990px) {
+
+    /* Заголовки секций становятся меньше,
+       чтобы лучше помещались на экране */
+    .section-title { 
+        font-size: 2rem; /* примерно 32px */
+    }
+
+    /* Главный заголовок hero-блока уменьшается,
+       и убирается левый отступ для выравнивания */
+    .hero__title { 
+        font-size: 2.8rem; /* около 45px */
+        margin-left: 0; /* убираем отступ слева */
+    }
+
+    /* Подзаголовок тоже становится компактнее */
+    .hero__subtitle { 
+        font-size: 1.3rem; /* около 21px */
+        margin-left: 0; /* выравнивание по центру или краю */
+    }
+
+    /* Блок "О нас" перестраивается в колонку
+       вместо горизонтального расположения */
+    .about__inner { 
+        flex-direction: column; /* элементы один под другим */
+        align-items: center; /* выравнивание по центру */
+    }
+
+    /* Картинка в блоке "О нас" перемещается наверх,
+       чтобы на мобильных она шла перед текстом */
+    .about__image { 
+        order: -1; /* ставим изображение первым */
+    }
+}
+
+
+/* --- Мобильные устройства --- */
+
+
+
+
+
+@media (max-width: 768px) {
+
+    /* Навигация */
+    .nav {
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #e1dddd;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+        z-index: 1000;
+    }
+
+    .nav.nav--active { 
+        max-height: 420px; 
+        padding: 12px 0; 
+    }
+
+    .nav__list { 
+        flex-direction: column; 
+        width: 100%; 
+    }
+
+    .nav__item { 
+        width: 100%; 
+        text-align: center; 
+        border-bottom: 1px solid rgba(0,0,0,0.04); 
+    }
+
+    .nav__link { 
+        display: block; 
+        padding: 12px 16px; 
+        width: 100%; 
+        text-decoration: none; 
+        color: #222; 
+    }
+
+    /* Заголовки секций */
+    .section-title::after { display: none; }
+    .section-title::before {
+        content: "";
+        display: block;
+        height: 250px;
+        margin-top: -120px;
+        visibility: hidden;
+    }
+
+    /* Герой-блок */
+    .hero {
+    height: 83vh;
+    text-align: right;
+    padding: 0 16px 0 24px;
+    background-image: url("/images/fon.jpg"); /* <--- добавь этот путь */
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: contain;
+        
+    }
+
+    .hero__title, 
+    .hero__subtitle { 
+        margin-right: 20px; 
+    }
+
+    .hero__word-success { 
+        display: block; 
+        margin-bottom: 6px; 
+        font-weight: 700; 
+    }
+
+    .hero__title { font-size: 2.4rem; }
+    .hero__subtitle { font-size: 1.15rem; }
+
+    .hero__buttons { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 12px; 
+        margin-left: 8px; 
+    }
+
+    /* Шапка */
+    .header { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 20px; 
+        padding: 20px; 
+    }
+
+    
+
+    /* Соцсети */
+    .social-link img { 
+        width: 64px; 
+        height: 64px; 
+    }
+}
+
+/* ===== Бургер-меню ===== */
 .menu-toggle {
-    display: none;
+    display: none; /* скрыт на десктопе */
     cursor: pointer;
     position: absolute;
     right: 60px;
@@ -191,6 +368,12 @@
     border: none;
     z-index: 1100;
     padding: 0;
+       display: none; /* показываем только на мобильных */
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .menu-toggle__line {
@@ -212,54 +395,32 @@
     transform: translateY(-8.5px) rotate(-45deg);
 }
 
-/* ========== АДАПТИВНОСТЬ ========== */
-@media (max-width: 990px) {
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .hero__title {
-        font-size: 2.8rem;
-    }
-
-    .hero__subtitle {
-        font-size: 1.3rem;
-    }
-
-    .about__inner {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .about__image {
-        order: -1;
-    }
-}
-
+/* ===== Показываем бургер на мобильных ===== */
 @media (max-width: 768px) {
-    /* Меню */
     .menu-toggle {
         display: flex;
     }
+
+
 
     .nav {
         position: absolute;
         top: 68px;
         left: 0;
         right: 0;
-        width: 100%;
+        background: #e1dddd;
         flex-direction: column;
         align-items: center;
-        background: #e1dddd;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-        overflow: hidden;
+        width: 100%;
         max-height: 0;
+        overflow: hidden;
         transition: max-height 0.35s ease, padding 0.35s ease;
         z-index: 1000;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     }
 
     .nav.nav--active {
-        max-height: 420px;
+        max-height: 420px; /* подстраивай под количество пунктов */
         padding: 12px 0;
     }
 
@@ -283,16 +444,28 @@
         color: #222;
     }
 
-    /* Герой-блок */
+@media (max-width: 768px) {
     .hero {
-        justify-content: flex-start;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* поднимаем контент вверх */
         align-items: center;
         text-align: center;
         height: 83vh;
-        padding-top: 120px;
+        padding-top: 120px; /* отступ сверху, можно подстроить */
         background-image: url("/images/fon.jpg");
-        background-size: cover;
+        background-size: 300%; /* чтобы фон полностью покрывал блок */
         background-position: center top;
+        background-repeat: no-repeat;
+        
+    }
+
+    .hero__content {
+        position: relative;
+        z-index: 2; /* чтобы текст и кнопка были поверх фона */
+        color: #fff; /* на случай, если фон тёмный */
+        width: 100%;
     }
 
     .hero__title {
@@ -306,13 +479,28 @@
     }
 
     .hero__buttons {
-        flex-direction: column;
-        gap: 12px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
     }
 
+    /* Кнопка "Заказать услугу" */
     .btn--primary {
+        background-color: #2c659b;
+        color: #fff;
+        border-radius: 50px;
         width: auto;
         padding: 10px 25px;
         font-size: 1.1rem;
+        box-shadow: var(--shadow);
+    }
+
+    .btn--primary:hover {
+        background-color: #677aa1;
+        transform: translateY(-2px);
     }
 }
+
+}
+
+
